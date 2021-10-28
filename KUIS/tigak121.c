@@ -16,7 +16,7 @@ int main () {
     double a, b, c; // Variabel untuk segitiga pertama
     double x, y, z; // Variabel untuk segitiga kedua
     
-    // Deklarasi variabel untuk menampung nilai-nilai sementara komponen segitiga
+    // Deklarasi variabel untuk menampung nilai-nilai sementara komponen segitiga   
     int tinggi;
     double alas;
     double hasil_sgt1, hasil_sgt2;
