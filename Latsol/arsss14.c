@@ -38,55 +38,42 @@ void strrevAlt(char sub[]) {
     }
 }
 
-int subScanFirst(int n, char str[n][301], char sub[]) {
-    int i, j;
+
+int subScan(int n, char str[n][301], char sub[]) {
+    int i, j, k;
     char temp[strlen(sub)+1];
     temp[strlen(sub)] = 0;
     int hasil = 0;
+    int counter = 0;
 
     //printf("ini sub: %s\n", sub);
-
-    for (i = 0; i < n; i++)
-    {
-        for (j = 0; j < strlen(sub); j++)
-        {
-            temp[j] = str[i][j];
-        }
-
-        if (strcmp (temp, sub) == 0)
-        {
-            hasil++;
-        }
-    }
-
-    return hasil;    
-}
-
-int subScanLast(int n, char str[n][301], char sub[]) {
-    int i, j;
-    char temp[strlen(sub)+1];
-    temp[strlen(sub)] = 0;
-    int hasil = 0;
-
     
-
-    //printf("ini sub: %s\n", sub);
-    strrevAlt(sub);
     for (i = 0; i < n; i++)
     {
-        strrevAlt(str[i]);
-        for (j = 0; j < strlen(sub); j++)
+        
+        for (j = 0; j < strlen(str[i]); j++)
         {
-            temp[j] = str[i][j];
-        }
+            for (k = j; k < j+strlen(sub); k++)
+            {
+                temp[counter++] = str[i][k];
 
-        if (strcmp (temp, sub) == 0)
-        {
-            hasil++;
+                if (counter == strlen(sub))
+                {
+                    counter = 0;
+                }
+            }
+            //printf("'%s' dan '%s' dan counter: %d\n", temp, sub, counter);
+            if (strcmp (temp, sub) == 0)
+            {
+                //printf("'%s' dan '%s'\n", temp, sub);
+                hasil++;
+                break;
+            }
+            
         }
-        strrevAlt(str[i]);
+        
     }
-    strrevAlt(sub);
+    
     return hasil;
 }
 
@@ -102,14 +89,13 @@ int main() {
     char str2[m][301];
     inputArr(m, str2);
 
-    char str_sub[2][301];
-    inputArr(2, str_sub);
+    char str_sub[1][301];
+    inputArr(1, str_sub);
 
     //printf("ini sub: %s", str_sub[0]);
 
-
-    if (subScanFirst(n, str1, str_sub[0])+subScanLast(n, str1, str_sub[1]) == 
-        subScanFirst(m, str2, str_sub[0])+subScanLast(m, str2, str_sub[1]))
+    
+    if (subScan(n, str1, str_sub[0]) == subScan(m, str2, str_sub[0]))
     {
         printf("valid\n");
     }
@@ -117,8 +103,9 @@ int main() {
     {
         printf("tidak valid\n");
     }
+    
 
-    //printf("%d ", subScanFirst(n, str1, str_sub[0]));
+    //printf("%d ", subScan(n, str1, str_sub[0]));
     //printf("%d", subScanLast(n, str1, str_sub[1]));
 
     
