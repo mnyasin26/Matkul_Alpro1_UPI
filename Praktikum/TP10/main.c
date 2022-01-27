@@ -1,6 +1,6 @@
 /* 
 Saya Muhamad Nur Yasin Amadudin (2100137) mengerjakan 
-Soal TP9 (Sihir Pengganti Nama Itheas)
+Soal TP10 (Infinite Techi Story - The Impostor Among Us)
 dalam mata kuliah Algoritma dan Pemrograman 1
 untuk keberkahan-Nya maka saya tidak melakukan 
 kecurangan seperti yang telah dispesifikasikan. Aamiin. 
@@ -15,33 +15,44 @@ int main() {
     // Variabal lokal
     int i;
     int n, m;
-    int jmlhEnergi = 100; // <-- insialisasi jumlah energi = 100
-    char namaTarget[51]; // <-- penampung kata kunci yang ingin dicari
+    char str[51];
+    char kode[7];
+
+    // Proses Input
+    scanf("%d", &n);
+    int x[n];
+    scanf("%d", &m);
+    scanf("%s", str);
+
+    inputInt(n, x); // <-- memanggil prosedur inputInt misal 1 1 1 3 4 5
+    scanf("%s", &kode);
     
-    // Proses input
-    scanf("%s", &namaTarget); // <-- Kata kunci
-    scanf("%d", &n); // <-- panjang/banyaknya barang yang ada
-    list_barang bar[n];
-    for (i = 0; i < n; i++) // <-- for untuk input kode, jumlah energi yang dibutuhkan, dan nama barang
+    dekripsi(n, x, str, kode); // <-- memanggil prosedur dekrispi untuk mendekripsi kata yang terenkripsi
+
+    int lol = identifikasi(n, m, str, kode); // <-- memanggil fungsu identifikasi penyamar lalu hasil nialinya disimpan ke variabel lol
+    
+    // Case switch untuk menentukan berdasarkan nilai lol, 1 = itheas, 2 = peter parker, 3 = boba dan bobi
+    switch (lol)
     {
-        scanf("%s", &bar[i].kode);
-        scanf("%d", &bar[i].energi);
-        scanf("%s", &bar[i].nama);
-        
-        dekripsi(bar[i].nama); // <-- setelah menginput nama barang sekalian memanggil prosedur untuk mendecode nama barang terenkripsi
+        case 1:
+        printf("Hasil dekripsi : %s\n", str);
+        printf("Penyamar       : Itheas\n");
+        break;
+
+        case 2:
+        printf("Hasil dekripsi : %s\n", str);
+        printf("Penyamar       : Peter\n");
+        break;
+
+        case 3:
+        printf("Hasil dekripsi : %s\n", str);
+        printf("Penyamar       : Boba dan Bobi\n");
+        break;
+    
+        default:
+        break;
     }
-    scanf("%d", &m); // <-- banyak kode yang ingin dicari
-    kode kodeTarget[m];
-    for (i = 0; i < m; i++) // <-- for untuk input kode yang ingin dicek/dicari
-    {
-        scanf("%s", &kodeTarget[i].kode);
-    }
-
-    int index = -1; // <-- inisialisasi -1 untuk mengantisipasi index 0
-    pemindai(n, m, kodeTarget, namaTarget, bar, &index, &jmlhEnergi); // <-- pindai kode input lalu hasil prosesnya simpan ke index dan jmlhEnergi
-
-    keluaran(bar, index, jmlhEnergi, n); // <-- memanggil prosedur keluaran untuk mencetak hasil semua agoritma ke layar
-
-    // Kembalikan nilai 0 agar compiler tau bahwa program berjalan lancar
-    return 0;    
+    
+    // kemablikan nilai 0 sebagai tanda program sukses
+    return 0;   
 }

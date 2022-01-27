@@ -1,0 +1,25 @@
+REM Program yang memproses elemen-elemen array berupa jam kerja pegawai dan mendapatkan total gaji pegawai dari total jam kerja
+CONST pegawai = 3 
+DIM honor as double 
+DIM gaji as double
+DIM jamKerja (pegawai) as integer
+DIM jam as integer 
+
+REM Melakukan perulangan for pada variabel jam dengan kondisi awal adalah 1 dan kondisi akhirnya sampai variabel pegawai
+FOR jam = 1 TO pegawai
+
+REM Gunakan statement input untuk menyimpan ke elemen array jamKerja dengan indeks jam
+INPUT jamKerja(jam)
+PRINT "Jam kerja pegawai ke-";jam; ": ";jamKerja(jam)
+Next jam
+
+REM Gunakan statement input untuk menyimpan ke variabel honor
+INPUT honor
+PRINT "Masukkan honor pegawai: ";honor
+
+REM Melakukan perulangan for pada variabel jam dengan kondisi awal adalah 1 dan kondisi akhirnya sampai variabel pegawai
+FOR jam = 1 TO pegawai
+gaji = jamKerja(jam) * honor
+PRINT "Gaji pegawai"; jam; ": ";gaji
+Next jam
+END

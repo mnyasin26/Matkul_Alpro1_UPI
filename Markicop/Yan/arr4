@@ -1,0 +1,42 @@
+REM Program yang memuat data nilai mahasiswa dalam array
+DIM banyakMahasiswa as integer
+
+REM Gunakan statement input untuk menyimpan nilai ke variabel banyakMahasiswa
+INPUT banyakMahasiswa
+PRINT "Masukkan jumlah mahasiswa:";banyakMahasiswa
+
+REM Deklarasi array nilaiMahasiswa yang memuat data bertipe integer dengan indeks awal 1 dan indeks akhir sampai banyaknya variabel banyakMahasiswa
+DIM nilaiMahasiswa(banyakMahasiswa) as integer
+REM Deklarasi array statusUjian yang memuat data bertipe String dengan indeks awal 1 dan indeks akhir sampai banyaknya variabel banyakMahasiswa
+DIM statusUjian(banyakMahasiswa) as string
+DIM mahasiswa as integer
+
+REM Melakukan perulangan for pada variabel mahasiswa dengan kondisi awal adalah 1 dan kondisi akhirnya sampai banyakMahasiswa yang di-input pengguna
+FOR mahasiswa = 1 TO banyakMahasiswa
+    
+
+REM Gunakan statement input untuk menyimpan ke elemen array nilaiMahasiswa
+INPUT nilaiMahasiswa(mahasiswa)
+PRINT "Nilai mahasiswa ke-";mahasiswa;":";nilaiMahasiswa(mahasiswa)
+Next mahasiswa
+
+REM Melakukan perulangan for pada variabel mahasiswa dengan kondisi awal adalah 1 dan kondisi akhirnya sampai banyakMahasiswa yang di-input pengguna
+FOR mahasiswa = 1 TO banyakMahasiswa
+REM Menggunakan pengujian kondisi dengan statement IF-THEN-ELSE-END apabila nilaiMahasiswa lebih besar atau sama dengan 75
+IF nilaiMahasiswa (mahasiswa) >= 75 THEN
+statusUjian(mahasiswa) = "Lulus"
+REM Pengujian kondisi dengan statement IF-THEN-ELSE-END apabila nilaiMahasiswa tidak memenuhi kondisi pertama
+ELSE  
+statusUjian(mahasiswa) = "Tidak lulus"
+END IF
+NEXT mahasiswa
+
+PRINT "Berikut adalah nilai mahasiswa yang Anda masukkan dan status nilai ujian mahasiswa:"
+PRINT " No             Nilai             Status Ujian"
+
+REM Melakukan perulangan for pada variabel mahasiswa dengan kondisi awal adalah 1 dan kondisi akhirnya sampai banyakMahasiswa yang di-input pengguna
+FOR mahasiswa = 1 TO banyakMahasiswa
+REM Mencetak array nilaiMahasiswa dan statusUjian
+PRINT mahasiswa; "              "; nilaiMahasiswa (mahasiswa); "                "; statusUjian (mahasiswa)
+NEXT mahasiswa
+END

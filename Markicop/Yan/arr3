@@ -1,0 +1,44 @@
+REM Program Mencari Angka Tertinggi dan Terendah dalam Array
+DIM angka (10) as integer 
+DIM tinggi as integer 
+DIM rendah as integer
+DIM x as integer 
+
+REM Melakukan perulangan untuk meminta pengguna memasukkan bilangan angka sebanyak 10 kali dengan kondisi awal 1 dan kondisi akhir 10
+FOR x = 1 TO 10 
+
+REM Gunakan statement input untuk memasukkan nilai bilangan angka ke array angka dengan indeks x
+INPUT angka(x)
+PRINT "Masukkan Angka: ";angka(x)
+NEXT x
+
+REM Menugaskan array angka berindeks 1 ke variabel tinggi
+tinggi = angka(1)
+
+REM Menugaskan array angka berindeks 1 ke variabel rendah
+rendah = angka(1)
+
+REM Melakukan perulangan for pada variabel x dengan kondisi awal adalah 2 dan kondisi akhir adalah 10
+FOR x = 2 TO 10
+    REM Gunakan statement if - elseif kondisi untuk menentukan angka tertinggi dan angka terendah
+    IF angka(x) > tinggi THEN
+        tinggi = angka(x)
+    ELSEIF angka(x) < rendah THEN
+        rendah = angka(x)
+    END IF
+NEXT x
+
+PRINT "Angka Array"
+
+REM Gunakan perulangan for terhadap variabel x untuk menampilkan nilai yang telah diinputkan pengguna
+FOR x = 1 to 10
+    PRINT Angka(x); " ";
+NEXT x
+PRINT ""
+
+REM Tampilkan nilai tertinggi
+PRINT "Angka tertinggi adalah: "; tinggi
+
+REM Tampilkan nilai terendah
+PRINT "Angka terendah adalah: "; rendah
+END

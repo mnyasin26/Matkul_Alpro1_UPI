@@ -1,0 +1,37 @@
+REM Program menghitung total nilai ujian mahasiswa
+DIM baris as integer
+DIM kolom as integer 
+ 
+REM Gunakan statement input untuk memasukkan nilai bilangan angka ke variabel baris
+INPUT baris
+PRINT "Masukkan banyak mahasiswa:";baris
+
+REM Gunakan statement input untuk memasukkan nilai bilangan angka ke variabel kolom
+INPUT kolom 
+PRINT "Masukkan banyak ujian:";kolom
+
+DIM nilaiUjian (baris, kolom) as integer
+DIM totalUjian (baris) as integer
+DIM i as integer
+DIM j as integer
+
+REM Melakukan perulangan for pada variabel i dengan kondisi awal 1 dan kondisi akhir nilai variabel baris
+FOR i = 1 TO baris
+PRINT "Masukkan nilai ujian untuk mahasiswa ke-";i;":"
+REM Melakukan perulangan for pada variabel j dengan kondisi awal 1 dan kondisi akhir nilai variabel kolom
+    FOR j = 1 TO kolom
+        INPUT nilaiUjian (i, j) 
+        PRINT "Masukkan nilai ujian ke-";j;":";nilaiUjian (i, j) 
+        NEXT j
+Next i
+
+REM Melakukan perulangan for pada variabel i dengan kondisi awal 1 dan kondisi akhir nilai variabel baris
+FOR i = 1 TO baris 
+REM Melakukan perulangan for pada variabel j dengan kondisi awal 1 dan kondisi akhir nilai variabel kolom
+    FOR j = 1 TO kolom
+        totalUjian(i) = totalUjian(i) + nilaiUjian(i, j) 
+        NEXT j
+PRINT "Total nilai mahasiswa ke-";i;":";totalUjian(i)
+NEXT i
+
+END
